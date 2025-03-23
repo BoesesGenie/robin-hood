@@ -1,10 +1,11 @@
 from fastapi import FastAPI
+from data import get_tasks
 
 app = FastAPI()
 
 @app.get("/")
-def greet():
-    return "Task list"
+def daily():
+    return get_tasks()
 
 if __name__ == "__main__":
     import uvicorn
