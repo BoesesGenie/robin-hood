@@ -8,6 +8,10 @@ _tasks: list[Task] = [
     Task(
         summary='Задача 2',
         content='Содержимое задачи два.'
+    ),
+    Task(
+        summary='Задача трёх тел',
+        content='Содержимое задачи трёх тел.'
     )
 ]
 
