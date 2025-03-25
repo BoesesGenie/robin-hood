@@ -1,7 +1,8 @@
-from model import Task
+from src.model.task import Task
 
 _tasks: list[Task] = [
     Task(
+        id='1',
         summary='Задача 1',
         content='Содержимое задачи один.',
         done=False,
@@ -11,6 +12,7 @@ _tasks: list[Task] = [
         updated_at=0
     ),
     Task(
+        id='2',
         summary='Задача 2',
         content='Содержимое задачи два.',
         done=False,
@@ -20,6 +22,7 @@ _tasks: list[Task] = [
         updated_at=0
     ),
     Task(
+        id='3',
         summary='Задача трёх тел',
         content='Содержимое задачи трёх тел.',
         done=False,
@@ -29,6 +32,7 @@ _tasks: list[Task] = [
         updated_at=0
     ),
     Task(
+        id='4',
         summary='Задача на сообразительность',
         content='Содержимое задачи на сообразительность.',
         done=False,
@@ -38,6 +42,7 @@ _tasks: list[Task] = [
         updated_at=0
     ),
     Task(
+        id='5',
         summary='Задача на производительность',
         content='Содержимое задачи на производительность.',
         done=False,
@@ -48,5 +53,26 @@ _tasks: list[Task] = [
     )
 ]
 
-def get_tasks() -> list[Task]:
+
+def get_all() -> list[Task]:
     return _tasks
+
+
+def get_one(id: str) -> Task | None:
+    for _task in _tasks:
+        if _task.id == id:
+            return _task
+
+    return None
+
+def create(task: Task) -> Task:
+    return task
+
+def modify(task: Task) -> Task:
+    return task
+
+def replace(task: Task) -> Task:
+    return task
+
+def delete(task_id: str) -> bool:
+    return True
