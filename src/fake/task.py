@@ -1,4 +1,4 @@
-from src.model.task import Task
+from model.task import Task
 
 _tasks: list[Task] = [
     Task(
