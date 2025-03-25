@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from src.model.task import Task
-import src.fake.task as service
+from model.task import Task
+import fake.task as service
 
 router = APIRouter(prefix = '/task')
 
