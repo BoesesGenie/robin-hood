@@ -44,7 +44,7 @@ _tasks: list[Task] = [
     Task(
         id='5',
         summary='Задача на производительность',
-        content='Содержимое задачи на производительность.',
+        content='Содержимое задачи на производительность очень интересное.',
         done=False,
         start=0,
         period=0,
@@ -58,9 +58,9 @@ def get_all() -> list[Task]:
     return _tasks
 
 
-def get_one(id: str) -> Task | None:
+def get_one(task_id: str) -> Task | None:
     for _task in _tasks:
-        if _task.id == id:
+        if _task.id == task_id:
             return _task
 
     return None
