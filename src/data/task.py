@@ -19,7 +19,7 @@ def init():
         )"""
     )
 
-def fow_to_model(row: tuple) -> Task:
+def row_to_model(row: tuple) -> Task:
     id, summary, content, done, start, period, created_at, updated_at = row
 
     return Task(
@@ -35,3 +35,11 @@ def fow_to_model(row: tuple) -> Task:
 
 def model_to_dict(task: Task) ->dict:
     return task.model_dump()
+
+def get_one(task_id: str) -> Task:
+    query = 'SELECT * FROM task WHERE id=:id'
+    params = {'id': task_id}
+    curs.execute(query, params)
+    row = curs.fetchone()
+
+    return row_to_model(row)
