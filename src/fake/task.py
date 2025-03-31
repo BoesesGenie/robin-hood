@@ -3,7 +3,7 @@ from model.task import Task
 _tasks: list[Task] = [
     Task(
         id='1',
-        summary='Задача 1',
+        summary='Задача номер 1',
         content='Содержимое задачи один.',
         done=False,
         start=0,
