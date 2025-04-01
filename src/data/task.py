@@ -1,9 +1,5 @@
-import sqlite3
 from model.task import Task
-
-DB_NAME = 'robinhood.db'
-conn = sqlite3.connect(DB_NAME)
-curs = conn.cursor()
+from .init import curs
 
 curs.execute(
     """CREATE TABLE IF NOT EXISTS task(
@@ -50,11 +46,13 @@ def get_all() -> list[Task]:
 
     return [row_to_model(row) for row in rows]
 
-def create(task: Task):
+def create(task: Task) -> Task:
     query = """INSERT INTO task VALUES
         (:id, :summary, :content, :done, :start, :period, :created_at, :updated_at)"""
     params = model_to_dict(task)
     curs.execute(query, params)
+
+    return task
 
 def modify(task: Task):
     return task

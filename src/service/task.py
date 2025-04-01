@@ -1,5 +1,5 @@
 from model.task import Task
-import fake.task as data
+import data.task as data
 
 def get_all() -> list[Task]:
     return data.get_all()
