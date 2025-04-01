@@ -47,10 +47,10 @@ def get_all() -> list[Task]:
     return [row_to_model(row) for row in rows]
 
 def create(task: Task) -> Task:
-    query = """INSERT INTO task VALUES
-        (:id, :summary, :content, :done, :start, :period, :created_at, :updated_at)"""
-    params = model_to_dict(task)
-    curs.execute(query, params)
+    # query = """INSERT INTO task VALUES
+    #    (:id, :summary, :content, :done, :start, :period, :created_at, :updated_at)"""
+    # params = model_to_dict(task)
+    # curs.execute(query, params)
 
     return task
 
@@ -61,6 +61,7 @@ def replace(task: Task):
     return task
 
 def delete(task_id: str):
-    query = "DELETE FROM task WHERE id = :id"
-    params = {'id': task_id}
-    curs.execute(query, params)
+    # query = "DELETE FROM task WHERE id = :id"
+    # params = {'id': task_id}
+    # curs.execute(query, params)
+    return
