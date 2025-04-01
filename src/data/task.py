@@ -47,11 +47,11 @@ def get_all() -> list[Task]:
     return [row_to_model(row) for row in rows]
 
 def create(task: Task) -> Task:
-    query = """INSERT INTO task VALUES
-       (:id, :summary, :content, :done, :start, :period, :created_at, :updated_at)"""
-    params = model_to_dict(task)
-    curs.execute(query, params)
-    conn.commit()
+    # query = """INSERT INTO task VALUES
+    #    (:id, :summary, :content, :done, :start, :period, :created_at, :updated_at)"""
+    # params = model_to_dict(task)
+    # curs.execute(query, params)
+    # conn.commit()
 
     return task
 
