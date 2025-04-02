@@ -1,5 +1,6 @@
 from model.task import Task
-from .init import curs, conn
+from .init import curs, conn, IntegrityError
+from error import Missing, Duplicate
 
 curs.execute(
     """CREATE TABLE IF NOT EXISTS task(
@@ -37,7 +38,10 @@ def get_one(task_id: str) -> Task:
     curs.execute(query, params)
     row = curs.fetchone()
 
-    return row_to_model(row)
+    if row:
+        return row_to_model(row)
+
+    raise Missing(msg=f"Task {task_id} not found")
 
 def get_all() -> list[Task]:
     query = 'SELECT * FROM task'
@@ -50,8 +54,12 @@ def create(task: Task) -> Task:
     # query = """INSERT INTO task VALUES
     #    (:id, :summary, :content, :done, :start, :period, :created_at, :updated_at)"""
     # params = model_to_dict(task)
-    # curs.execute(query, params)
-    # conn.commit()
+    #
+    # try:
+    #     curs.execute(query, params)
+    #     conn.commit()
+    # except IntegrityError:
+    #     raise Duplicate(msg=f"Task {task.id} already exists")
 
     return task
 
@@ -65,4 +73,7 @@ def delete(task_id: str):
     # query = "DELETE FROM task WHERE id = :id"
     # params = {'id': task_id}
     # curs.execute(query, params)
+    #
+    # if curs.rowcount != 1:
+    #     raise Missing(msg=f"Task {task_id} not found")
     return
