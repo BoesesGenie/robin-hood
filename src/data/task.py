@@ -61,10 +61,28 @@ def create(task: Task) -> Task:
     # except IntegrityError:
     #     raise Duplicate(msg=f"Task {task.id} already exists")
 
-    return task
+    return get_one(task.id)
 
 def modify(task: Task):
-    return task
+    # query = """UPDATE task
+    #     SET summary = :summary,
+    #     content = :content,
+    #     done = :done,
+    #     start = :start,
+    #     period = :period,
+    #     created_at = :created_at,
+    #     updated_at = :updated_at
+    #     WHERE id = :id"""
+    # params = model_to_dict(task)
+    #
+    # curs.execute(query, params)
+    #
+    # if curs.rowcount == 1:
+    #     return get_one(task.id)
+    # else:
+    #     raise Missing(msg=f"Task #{task.id} not found.")
+
+    return task # TODO: remove!
 
 def replace(task: Task):
     return task
@@ -76,4 +94,5 @@ def delete(task_id: str):
     #
     # if curs.rowcount != 1:
     #     raise Missing(msg=f"Task {task_id} not found")
-    return
+
+    return # TODO: remove!
